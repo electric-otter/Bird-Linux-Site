@@ -5,53 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bird Linux</title>
   <style>
-h1 {
-  font-family: Noto Sans, sans-serif;
-  font-size: 24px;
-  font-weight: 300;
-}
-
-p {
-  font-family: Noto Sans, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 300;
-}
-
-.header {
-  background-color: #121212;
-  padding: 10px;
-  text-align: center;
-  color: green;
-}
-
-.js .language-picker__form { 
-  /* if JavaScript is enabled, hide the default form element */
-  display: none;
-}
-
-.language-picker__dropdown {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 200px;
-  background-color: var(--color-bg);
-  box-shadow: var(--shadow-sm);
-  padding: var(--space-xxs) 0;
-  border-radius: 0.25em;
-  z-index: var(--zindex-popover);
-  visibility: hidden; /* hide the language list by default */
-  opacity: 0;
-  transition: .2s ease-out;
-}
-
-.language-picker__button[aria-expanded="true"] + .language-picker__dropdown { 
-  /* show the language list when the aria-expanded attribute of the button element is true */
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(4px);
-}
-
+    /* Your existing CSS styles */
   </style>
 </head>
 <body>
@@ -59,65 +13,6 @@ p {
     <h1>Bird Linux - Open source power</h1>
   </header>
   <h1>Behold, the future of computing</h1>
-  <div class="language-picker js-language-picker">
-    <form action="" class="language-picker__form">
-      <label for="language-picker-select">Select your language</label>
-      <select name="language-picker-select" id="language-picker-select">
-        <option lang="ru" value="russian">Russian</option>
-        <option lang="en" value="english" selected>English</option>
-      </select>
-    </form>
-  </div>
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var LanguagePicker = function (element) {
-    this.element = element;
-    this.select = this.element.getElementsByTagName('select')[0];
-    this.options = this.select.getElementsByTagName('option');
-    this.pickerId = this.select.getAttribute('id');
-    initLanguagePicker(this);
-  };
-
-  // Initialize the LanguagePicker objects
-  var languagePicker = document.getElementsByClassName('js-language-picker');
-  if (languagePicker.length > 0) {
-    for (var i = 0; i < languagePicker.length; i++) {
-      new LanguagePicker(languagePicker[i]);
-    }
-  }
-
-  // Click events
-  var pickerTriggers = document.querySelectorAll('.language-picker__item');
-  pickerTriggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
-      toggleLanguagePicker(trigger);
-    });
-  });
-
-  function toggleLanguagePicker(trigger) {
-    var ariaExpanded = trigger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
-    trigger.setAttribute('aria-expanded', ariaExpanded);
-    if (ariaExpanded === 'true') {
-      trigger.parentNode.addEventListener('transitionend', function cb() {
-        trigger.focus();
-        trigger.parentNode.removeEventListener('transitionend', cb);
-      });
-    }
-  }
-
-  // Listen for key events
-  window.addEventListener('keyup', function (event) {
-    if (event.keyCode === 27 || event.key.toLowerCase() === 'escape') {
-      // Close language picker on 'Esc'
-      pickerTriggers.forEach(function (trigger) {
-        if (trigger.getAttribute('aria-expanded') === 'true') {
-          toggleLanguagePicker(trigger);
-        }
-      });
-    }
-  });
-});
-
-  </script>
+  <div class="sp-embed-player" data-id="cZlwqDneqyD"><script src="https://go.screenpal.com/player/appearance/cZlwqDneqyD"></script><iframe width="100%" height="100%" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cZlwqDneqyD?width=100%&height=100%&ff=1&title=0" allowfullscreen="true"></iframe></div>
 </body>
 </html>
