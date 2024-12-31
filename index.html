@@ -1,21 +1,31 @@
-<style>
-  h1 {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Linux</title>
+  <style>
+h1 {
   font-family: Noto Sans, sans-serif;
   font-size: 24px;
-  font-weight: 300
+  font-weight: 300;
 }
-  p {
+
+p {
   font-family: Noto Sans, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
 }
-  .header {
+
+.header {
   background-color: #121212;
   padding: 10px;
   text-align: center;
-    .js .language-picker__form { 
-  // if JavaScript is enabled, hide the default form element
+}
+
+.js .language-picker__form { 
+  /* if JavaScript is enabled, hide the default form element */
   display: none;
 }
 
@@ -29,38 +39,36 @@
   padding: var(--space-xxs) 0;
   border-radius: 0.25em;
   z-index: var(--zindex-popover);
-  
-  // hide the language list by default
-  visibility: hidden;
+  visibility: hidden; /* hide the language list by default */
   opacity: 0;
   transition: .2s ease-out;
 }
 
 .language-picker__button[aria-expanded="true"] + .language-picker__dropdown { 
-  // show the language list when the aria-expanded attribute of the button element is true
+  /* show the language list when the aria-expanded attribute of the button element is true */
   visibility: visible;
   opacity: 1;
   transform: translateY(4px);
 }
-}
-</style>
-<title>Bird linux</title>
-<header>
-  <h1>Bird Linux - Open source power</h1>
-</header>
-<h1>Belold, the future of computing,</h1>
-<div class="language-picker js-language-picker">
-  <form action="" class="language-picker__form">
-    <label for="language-picker-select">Select your language</label>
 
-    <select name="language-picker-select" id="language-picker-select">
-      <option lang="de" value="russian">Russian</option>
-      <option lang="en" value="english" selected>English</option>
-    </select>
-  </form>
-</div>
-<script>
- document.addEventListener('DOMContentLoaded', function () {
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Bird Linux - Open source power</h1>
+  </header>
+  <h1>Behold, the future of computing</h1>
+  <div class="language-picker js-language-picker">
+    <form action="" class="language-picker__form">
+      <label for="language-picker-select">Select your language</label>
+      <select name="language-picker-select" id="language-picker-select">
+        <option lang="ru" value="russian">Russian</option>
+        <option lang="en" value="english" selected>English</option>
+      </select>
+    </form>
+  </div>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
   var LanguagePicker = function (element) {
     this.element = element;
     this.select = this.element.getElementsByTagName('select')[0];
@@ -109,4 +117,6 @@
   });
 });
 
-</script>
+  </script>
+</body>
+</html>
