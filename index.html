@@ -14,6 +14,34 @@
   background-color: #121212;
   padding: 10px;
   text-align: center;
+    .js .language-picker__form { 
+  // if JavaScript is enabled, hide the default form element
+  display: none;
+}
+
+.language-picker__dropdown {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-xxs) 0;
+  border-radius: 0.25em;
+  z-index: var(--zindex-popover);
+  
+  // hide the language list by default
+  visibility: hidden;
+  opacity: 0;
+  transition: .2s ease-out;
+}
+
+.language-picker__button[aria-expanded="true"] + .language-picker__dropdown { 
+  // show the language list when the aria-expanded attribute of the button element is true
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(4px);
+}
 }
 </style>
 <title>Bird linux</title>
@@ -21,3 +49,76 @@
   <h1>Bird Linux - Open source power</h1>
 </header>
 <h1>Belold, the future of computing,</h1>
+<div class="language-picker js-language-picker">
+  <form action="" class="language-picker__form">
+    <label for="language-picker-select">Select your language</label>
+
+    <select name="language-picker-select" id="language-picker-select">
+      <option lang="de" value="russian">Russian</option>
+      <option lang="en" value="english" selected>English</option>
+    </select>
+  </form>
+</div>
+<script>
+  <div class="language-picker__dropdown" aria-describedby="language-picker-description" id="language-picker-dropdown">
+  <p class="sr-only" id="language-picker-description">Select your language</p>
+
+  <ul class="language-picker__list" role="listbox">
+    <li>
+      <a lang="de" hreflang="de" href="#" role="option" data-value="russian" class="language-picker__item language-picker__flag language-picker__flag--deutsch">Russia</a>
+    </li>
+
+    <li>
+      <a lang="en" hreflang="en" href="#" aria-selected="true" role="option" data-value="english" class="language-picker__item language-picker__flag language-picker__flag--english">English</a>
+    var LanguagePicker = function(element) {
+  this.element = element;
+  this.select = this.element.getElementsByTagName('select')[0];
+  this.options = this.select.getElementsByTagName('option');
+  this.pickerId = this.select.getAttribute('id');
+  // ..
+  initLanguagePicker(this);
+};
+
+//initialize the LanguagePicker objects
+var languagePicker = document.getElementsByClassName('js-language-picker');
+if( languagePicker.length > 0 ) {
+  for( var i = 0; i < languagePicker.length; i++) {
+      new LanguagePicker(languagePicker[i]);
+  }
+}
+  // click events
+picker.trigger.addEventListener('click', function(){
+   toggleLanguagePicker(picker);
+});
+
+function toggleLanguagePicker(picker, bool) {
+  var ariaExpanded;
+  if(bool) {
+     ariaExpanded = bool;
+  } else {
+     ariaExpanded = picker.trigger.getAttribute('aria-expanded') == 'true' ? 'false' : 'true';
+  }
+
+  picker.trigger.setAttribute('aria-expanded', ariaExpanded);
+  if(ariaExpanded == 'true') {
+    picker.dropdown.addEventListener('transitionend', function cb(){
+      // once the dropdown is visible -> move focus from trigger to the first language in the list
+      picker.firstLanguage.focus();
+      picker.dropdown.removeEventListener('transitionend', cb);
+    });
+  }
+};
+  // listen for key events
+window.addEventListener('keyup', function(event){
+  if( event.keyCode && event.keyCode == 27 || event.key && event.key.toLowerCase() == 'escape' ) {
+    // close language picker on 'Esc'
+    pickerArray.forEach(function(element){
+      moveFocusToTrigger(element); // if focus is still within the dropdown, move it to dropdown trigger
+      toggleLanguagePicker(element, 'false'); // close dropdown
+    });
+  } 
+});
+    </li>
+  </ul>
+</div>
+</script>
